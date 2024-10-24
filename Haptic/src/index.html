@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haptic Fidget with Relaxing and Focus Patterns</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #e0f7fa;
+            user-select: none; /* Prevent text highlighting */
+            font-family: Arial, sans-serif;
+        }
+        .screen {
+            display: none;
+            width: 80%;
+            height: 80%;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            flex-direction: column;
+        }
+        .active {
+            display: flex;
+        }
+        #menuScreen select,
+        #menuScreen button,
+        #fidgetScreen button {
+            font-size: 18px;
+            padding: 10px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        #fidgetScreen input[type="range"] {
+            width: 80%;
+            margin-top: 20px;
+        }
+        .back-button {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            padding: 10px;
+            background-color: #009688;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .back-button:hover {
+            background-color: #00796b;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Menu Screen -->
+<div id="menuScreen" class="screen active">
+    <h2>Customize Your Haptics</h2>
+    <label for="patternSelect">Choose a Haptic Pattern:</label>
+    <select id="patternSelect">
+        <option value="0">Gentle Pulse</option>
+        <option value="1">Soft Rhythmic Pulses</option>
+        <option value="2">Long Continuous Vibration</option>
+        <option value="3">Wave-Like Pattern</option>
+        <option value="4">"Shake It Off" Rhythm</option>
+        <option value="5">Slow Wave</option> <!-- New soothing pattern -->
+        <option value="6">Pulse Massage</option> <!-- New soothing pattern -->
+        <option value="7">Deep Relax</option> <!-- New soothing pattern -->
+        <option value="8">Tension Relief</option> <!-- New soothing pattern -->
+        <option value="9">Focused Pulse</option> <!-- ADHD-friendly pattern -->
+        <option value="10">Energy Flow</option> <!-- ADHD-friendly pattern -->
+        <option value="11">Calm Cycle</option> <!-- ADHD-friendly pattern -->
+        <option value="12">Grounding Beat</option> <!-- ADHD-friendly pattern -->
+    </select>
+    <br>
+    <button id="startFidget">Start Fidget</button>
+</div>
+
+<!-- Fidget Screen -->
+<div id="fidgetScreen" class="screen">
+    <h2>Adjust Haptic Strength</h2>
+    <label for="hapticStrength">Haptic Strength:</label>
+    <input type="range" id="hapticStrength" min="0.1" max="1" step="0.1" value="0.5">
+    <button id="startHaptic">Start Haptics</button>
+    <button id="stopHaptic">Stop Haptics</button>
+    <button class="back-button" id="backToMenuFromFidget">Back to Menu</button>
+</div>
+
+<!-- Sound for Soothing Mechanical Keyboard -->
+<audio id="keyboardSound" src="https://www.soundjay.com/mechanical-keyboard/mechanical-keyboard-single-key-01.mp3" preload="auto"></audio>
+
+<script>
+    let patternIndex = 0;
+    let vibrationInterval;
+    let hapticStrength = 0.5; // Default haptic strength (50% intensity)
+    const sound = document.getElementById('keyboardSound');
+
+    // Define haptic patterns (with new ADHD-friendly patterns)
+    const patterns = [
+        [200, 100, 200, 100, 300], // Gentle pulse
+        [100, 50, 100, 50, 100, 50], // Soft rhythmic pulses
+        [500], // Long continuous vibration
+        [300, 100, 500, 100, 300], // Wave-like pattern
+        [500, 300, 500, 300, 500, 1000, 300, 300, 300], // "Shake It Off" rhythm
+        [500, 500, 1000, 500, 500], // Slow Wave - long wave-like vibrations
+        [200, 100, 200, 100, 400], // Pulse Massage - rhythmic pulse pattern
+        [2000, 500, 2000], // Deep Relax - long continuous vibrations with soft pauses
+        [100, 200, 100, 300, 500], // Tension Relief - alternating short and long vibrations
+        [100, 100, 100, 50, 100, 50], // Focused Pulse - quick bursts for focus
+        [300, 200, 300, 100, 300], // Energy Flow - dynamic alternating pattern
+        [500, 500, 300, 500, 500], // Calm Cycle - balanced pattern for energy and calm
+        [1000, 300, 1000, 300] // Grounding Beat - deep, steady vibrations for grounding
+    ];
+
+    // Switch to fidget screen
+    document.getElementById('startFidget').addEventListener('click', function() {
+        const selectedPattern = document.getElementById('patternSelect').value;
+        patternIndex = parseInt(selectedPattern, 10);
+
+        document.getElementById('menuScreen').classList.remove('active');
+        document.getElementById('fidgetScreen').classList.add('active');
+    });
+
+    // Back to menu from fidget screen and stop vibration
+    document.getElementById('backToMenuFromFidget').addEventListener('click', function() {
+        document.getElementById('fidgetScreen').classList.remove('active');
+        document.getElementById('menuScreen').classList.add('active');
+        stopVibration(); // Stop haptics when navigating back to the menu
+    });
+
+    // Handle continuous vibration on fidget screen
+    function startVibration() {
+        if ('vibrate' in navigator) {
+            vibrationInterval = setInterval(() => {
+                const strengthAdjustedPattern = patterns[patternIndex].map(duration => duration * hapticStrength); // Adjust pattern with strength
+                navigator.vibrate(strengthAdjustedPattern); // Apply adjusted pattern
+            }, 1000); // Repeat every 1 second
+        } else {
+            alert('Vibration API is not supported on this device');
+        }
+    }
+
+    // Stop vibration
+    function stopVibration() {
+        clearInterval(vibrationInterval);
+    }
+
+    // Start and stop buttons for haptics on fidget screen
+    document.getElementById('startHaptic').addEventListener('click', function() {
+        startVibration();
+        sound.play(); // Play soothing sound on start
+    });
+
+    document.getElementById('stopHaptic').addEventListener('click', function() {
+        stopVibration();
+    });
+
+    // Update haptic strength based on slider input
+    document.getElementById('hapticStrength').addEventListener('input', function() {
+        hapticStrength = parseFloat(this.value);
+    });
+</script>
+
+</body>
+</html>
