@@ -3,76 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haptic Fidget with Relaxing and Music Patterns</title>
+    <title>Haptic Fidget with Retro 80s Style</title>
     <style>
+        /* Body and Background Styling */
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #e0f7fa;
+            background: linear-gradient(135deg, #ff0080, #8000ff, #00f0ff);
             user-select: none;
-            font-family: Arial, sans-serif;
+            font-family: 'Press Start 2P', cursive;
+            color: #fff;
             flex-direction: column;
+            overflow: hidden;
         }
+        
+        /* Neon 80s Frame for Screens */
         .screen {
             display: none;
-            width: 80%;
+            width: 30%;
             height: 80%;
-            background-color: #ffffff;
+            background: rgba(0, 0, 0, 0.8);
             border-radius: 15px;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
             justify-content: center;
             align-items: center;
-            font-size: 24px;
-            color: #333;
+            font-size: 16px;
+            color: #fff;
             text-align: center;
             padding: 20px;
             position: relative;
             flex-direction: column;
+            border: 2px solid #ff00ff;
         }
+
         .active {
             display: flex;
         }
+
+        /* Menu Select and Buttons with Neon Borders */
         #menuScreen select,
         #menuScreen button,
         #fidgetScreen button {
-            font-size: 18px;
+            font-size: 16px;
             padding: 10px;
             margin-top: 20px;
             cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #ffccff;
+            border: 2px solid #ff00ff;
+            border-radius: 5px;
         }
+        
         #fidgetScreen input[type="range"] {
             width: 80%;
             margin-top: 20px;
+            cursor: pointer;
         }
+
+        /* Back Button Styling */
         .back-button {
             position: absolute;
             bottom: 20px;
             left: 20px;
             padding: 10px;
-            background-color: #009688;
+            background-color: #ff00ff;
             color: white;
             border: none;
             border-radius: 10px;
             cursor: pointer;
         }
+        
         .back-button:hover {
-            background-color: #00796b;
+            background-color: #c700c7;
         }
-        .warning-message {
-            font-size: 16px;
-            color: red;
+
+        /* Important Message Styling */
+        .important-message {
+            font-size: 14px;
+            color: #ff66cc;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px;
+            border-radius: 5px;
             margin-top: 20px;
+            border: 2px solid #ff00ff;
+            text-align: center;
         }
+
+        /* ASCII Pet Animations */
+        .pet {
+            position: absolute;
+            font-size: 24px;
+            animation: float 3s infinite alternate ease-in-out;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        /* Positioning Pets */
+        .pet1 { top: 5%; left: 5%; }
+        .pet2 { top: 10%; right: 5%; }
+        .pet3 { bottom: 10%; left: 10%; }
+        .pet4 { top: 20%; left: 20%; }
+        .pet5 { top: 25%; right: 15%; }
+        .pet6 { bottom: 5%; left: 25%; }
+        .pet7 { top: 35%; left: 10%; }
+        .pet8 { top: 40%; right: 20%; }
+        .pet9 { bottom: 20%; left: 15%; }
+        .pet10 { top: 50%; left: 25%; }
+        .pet11 { top: 15%; left: 35%; }
+        .pet12 { bottom: 15%; right: 10%; }
+        .pet13 { top: 5%; left: 40%; }
+        .pet14 { top: 40%; right: 25%; }
+        .pet15 { bottom: 5%; right: 35%; }
+        .pet16 { top: 30%; left: 50%; }
+        .pet17 { top: 20%; right: 40%; }
+        .pet18 { bottom: 25%; left: 30%; }
+        .pet19 { top: 40%; left: 55%; }
+        .pet20 { top: 65%; right: 30%; }
+        .pet21 { bottom: 10%; left: 50%; }
+        .pet22 { top: 15%; right: 45%; }
+        .pet23 { bottom: 20%; right: 20%; }
+        .pet24 { top: 85%; left: 0%; }
+        .pet25 { bottom: 30%; right: 25%; }
+        .pet26 { top: 85%; left: 40%; }
+        .pet27 { bottom: 5%; right: 5%; }
+        .pet28 { top: 90%; left: 10%; }
+        .pet29 { bottom: 35%; left: 30%; }
+        .pet30 { top: 10%; left: 60%; }
+        .pet31 { bottom: 45%; right: 15%; }
+        .pet32 { top: 85%; right: 20%; }
+        .pet33 { bottom: 50%; left: 55%; }
+        .pet34 { top: 70%; right: 45%; }
+        .pet35 { bottom: 25%; right: 35%; }
+
+        /* Floating Animation */
+        @keyframes float {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+
         #feedbackMessage {
-            font-size: 16px;
-            color: #555;
+            font-size: 12px;
+            color: #ffccff;
             margin-top: 20px;
         }
     </style>
 </head>
 <body>
+
+<!-- Retro 80s Pets -->
+<div class="pet pet1">(=^_^=)</div>
+<div class="pet pet2">(•‿•)</div>
+<div class="pet pet3">(^・ω・^ )</div>
+<div class="pet pet4">(>‿◠)</div>
+<div class="pet pet5">(๑>◡<๑)</div>
+<div class="pet pet6">(^_^メ)</div>
+<div class="pet pet7">٩(˘◡˘)۶</div>
+<div class="pet pet8">( ≧∇≦)</div>
+<div class="pet pet9">(=^‥^=)</div>
+<div class="pet pet10">(ᵔᴥᵔ)</div>
+<div class="pet pet11">(＾ω＾)</div>
+<div class="pet pet12">(ΦωΦ)</div>
+<div class="pet pet13">(^_~)</div>
+<div class="pet pet14">(⌒ω⌒)</div>
+<div class="pet pet15">(｀ω´)</div>
+<div class="pet pet16">(・`ω´・)</div>
+<div class="pet pet17">(≧ω≦)</div>
+<div class="pet pet18">(￣ω￣;)</div>
+<div class="pet pet19">( ˘ω˘ )</div>
+<div class="pet pet20">( ≧ω≦ )</div>
+<div class="pet pet21">(◕ω◕)</div>
+<div class="pet pet22">(*≧ω≦)</div>
+<div class="pet pet23">(ΦεΦ)</div>
+<div class="pet pet24">( ･ω･ )</div>
+<div class="pet pet25">(^ω^)</div>
+<div class="pet pet26">(o´ω｀o)</div>
+<div class="pet pet27">(^◇^)</div>
+<div class="pet pet28">(ﾉ´ω｀･)</div>
+<div class="pet pet29">(ΘωΘ)</div>
+<div class="pet pet30">(o`ω´o)</div>
+<div class="pet pet31">(^▽^)</div>
+<div class="pet pet32">(｡•ω•｡)</div>
+<div class="pet pet33">(･ω･｡)</div>
+<div class="pet pet34">(≧ω≦)</div>
+<div class="pet pet35">(ΦωΦ)</div>
 
 <!-- Menu Screen -->
 <div id="menuScreen" class="screen active">
@@ -98,7 +214,7 @@
     <br>
     <button id="startFidget">Start Fidget</button>
     
-    <div class="warning-message">
+    <div class="important-message">
         <strong>Important:</strong> Do not place near the heart. Haptics is only for your hands.
     </div>
 </div>
@@ -112,6 +228,11 @@
     <button id="stopHaptic">Stop Haptics</button>
     <button class="back-button" id="backToMenuFromFidget">Back to Menu</button>
     
+    <!-- Important Message on Fidget Screen -->
+    <div class="important-message">
+        <strong>Important:</strong> Do not place near the heart. Haptics is only for your hands.
+    </div>
+    
     <!-- Haptic Counter Display -->
     <div id="hapticCounterDisplay">Haptics Felt: 0</div>
 </div>
@@ -121,15 +242,11 @@
     For feedback, please email benjaminhunter773@gmail.com.
 </div>
 
-<!-- Sound for Soothing Mechanical Keyboard -->
-<audio id="keyboardSound" src="https://www.soundjay.com/mechanical-keyboard/mechanical-keyboard-single-key-01.mp3" preload="auto"></audio>
-
 <script>
     let patternIndex = 0;
     let vibrationInterval;
     let hapticStrength = 0.5;
     let hapticCounter = 0;
-    const sound = document.getElementById('keyboardSound');
 
     const patterns = [
         [20, 30, 40, 50],
@@ -185,7 +302,6 @@
 
     document.getElementById('startHaptic').addEventListener('click', function() {
         startVibration();
-        sound.play();
     });
 
     document.getElementById('stopHaptic').addEventListener('click', function() {
