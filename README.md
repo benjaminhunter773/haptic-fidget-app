@@ -1,8 +1,19 @@
-🐒 Haptic Fidget App 🐒
+🐒 Haptic Fidget App 🐒 
 Welcome to the Haptic Fidget App! This is a web-based app that brings soothing and customizable haptic feedback patterns to your fingertips. Whether you’re looking to relax, stay focused, or just have some fun with vibrations, this app has you covered. Plus, there’s an ape 🦍 in this README—because why not?
 
 
+## 🚨 Important Note 🚨
+
+**⚠️ Compatibility**: The Haptic Fidget App is **currently only compatible with Android devices** that support haptic feedback.
+
+📱 *Android Users*: You’re good to go! Enjoy the vibes.
+
+🍏 *iOS Users*: Compatibility for iOS devices is coming in a future update—stay tuned!  
+
+
+
 <sub>Ape approves of your relaxation journey.</sub>
+
 
 🍃 Features
 Here’s what you can do with this fidgety little app:
@@ -14,6 +25,7 @@ Feedback Friendly: We’re all ears (and vibrations)! Send us your thoughts.
 
 
 <sub>Just a peek of what’s to come.</sub>
+
 
 🚀 Getting Started
 Want to run this locally? Easy peasy!
@@ -29,14 +41,22 @@ Adjust the Strength: Use the slider to control how intense the vibrations feel.
 Start and Stop: Click "Start Haptics" to begin and "Stop Haptics" to end.
 Note: This app works best on mobile devices that support haptic feedback.
 
+
+
 📬 Feedback
 Got some thoughts? Or just want to chat? Feel free to email us at benjaminhunter773@gmail.com. We’re always eager to hear from fellow vibe seekers!
+
+
 
 🐣 Easter Egg
 You found the Easter egg! If you’re reading this, congrats 🎉! Here’s a fun secret: Try clicking the "Start Haptics" button 13 times in a row and see what happens! (Hint: There may or may not be a special message waiting for you!)
 
+
+
 🤝 Contributing
 Want to add more patterns? Found a bug? Feel free to contribute!
+
+
 
 Fork the repository.
 Make your changes in a new branch.
