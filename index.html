@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,8 +19,21 @@
             color: #fff;
             flex-direction: column;
             overflow: hidden;
+            position: relative;
         }
-        
+
+        /* Feedback Message Styling */
+        #feedbackMessage {
+            font-size: 24px;
+            color: #ffccff;
+            font-family: 'VT323', monospace;
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
         /* Neon 80s Frame for Screens */
         .screen {
             display: none;
@@ -45,8 +56,6 @@
         .active {
             display: flex;
         }
-      
-      
 
         /* Menu Select and Buttons with Neon Borders */
         #menuScreen select,
@@ -129,16 +138,14 @@
             from { transform: translateY(0); }
             to { transform: translateY(-10px); }
         }
-
-        #feedbackMessage {
-            font-size: 24px;
-            color: #ffccff;
-            margin-top: 5px;
-            font-family: 'VT323', monospace;
-        }
     </style>
 </head>
 <body>
+
+<!-- Feedback Message at the Top Center -->
+<div id="feedbackMessage">
+    For feedback, please email benjaminhunter773@gmail.com.
+</div>
 
 <!-- Pet Container with Grid Layout for Even Spacing -->
 <div class="pet-container">
@@ -193,6 +200,11 @@
     <div class="pet">🐷</div>
     <div class="pet">🐤</div>
 </div>
+
+<!-- Rest of the HTML content remains the same -->
+...
+</body>
+</html>
 
 <!-- Menu Screen -->
 <div id="menuScreen" class="screen active">
