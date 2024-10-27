@@ -21,7 +21,7 @@ Want to run this locally? Easy peasy!
 Clone the Repository
 bash
 Copy code
-git clone https://github.com/benjaminhunter/haptic-fidget-app.git
+git clone https://github.com/benjaminhunter773/haptic-fidget-app.git
 Open index.html in your browser, and you’re ready to vibe.
 🛠️ Usage
 Select a Pattern: Pick your preferred haptic pattern from the dropdown.
